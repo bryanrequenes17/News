@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"  crossorigin="anonymous">
+        <style>
+            body{
+                background: url('http://imagenes.universia.net/gc/net/images/educacion/-/-b/-bi/-bibliotecas-digitales.jpg') no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }  
+        </style>
+    </head>
+    <body >
+        <div class="container">
+
+            <div id="d1" style="position:absolute ; transform: translate(-50%, -50%) ">
+                 
+
+                 <div>
+                    <h1 style="position: center; color: white ">FERCHO TIPS</h1>
+                </div>
+                <div>
+                    <button id="Google">Login Google</button>
+                </div>
+
+           
+
+            </div>
+        </div>
+        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBHUy-kHhWZKJ-QL3NtJkMO2giQsaGyAk0",
+                authDomain: "revista-ff832.firebaseapp.com",
+                databaseURL: "https://revista-ff832.firebaseio.com",
+                projectId: "revista-ff832",
+                storageBucket: "revista-ff832.appspot.com",
+                messagingSenderId: "885560839652"
+            };
+            firebase.initializeApp(config);
+
+            document.getElementById("Google").addEventListener("click", function () {
+                var provider = new firebase.auth.GoogleAuthProvider();
+
+                firebase.auth().signInWithPopup(provider).then(function (user) {
+                    alert("Google signIn");
+                    console.log(user);
+
+                }).catch(function (error) {
+                    alert("error");
+                    console.log(error);
+                })
+            })
+        </script>
+    </body>
+</html>

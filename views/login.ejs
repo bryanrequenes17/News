@@ -1,0 +1,123 @@
+
+<html>
+    <head>
+        <title>Dimension by HTML5 UP</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href='/stylesheets/main_1.css' />
+        <noscript><link rel="stylesheet" href='/stylesheets/noscript_1.css' /></noscript>
+
+    </head>
+    <body class="is-preload">
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+            <header id="header">
+                <div class="logo">
+                    <img width="60%" style="padding-top: 16.5px" src='/images/transparente.png'>
+                </div>
+                <div class="content">
+                    <div class="inner">
+                        <h1>News Systems</h1>
+                        <p>Una revista de informaticos para informaticos y la comunidad</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#intro">Intro</a></li>
+                        <li><a href="#work">Trabajo</a></li>
+                        <li><a href="#about">Autores</a></li>
+                        <li><a class="button" id="Google">Login</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Main -->
+            <div id="main">
+
+                <!-- Introduccion -->
+                <article id="intro">
+                    <h2 class="major">Introducción</h2>
+                    <span class="image main"><img src='/images/pic01.jpg' alt="" /></span>
+                    <p>News Systems es una revista que se enfoca en presentar las noticias que se generan dentro de la carrera de Sistemas y la Universidad que son de interes de los estudiantes.</p>
+                    <p></p>
+                </article>
+
+                <!-- Trabajo -->
+                <article id="work">
+                    <h2 class="major">Trabajo</h2>
+                    <span class="image main"><img src='/images/pic02.jpg' alt="" /></span>
+                    <p>Las noticias presentadas en nuestra revista son de caracter informativo, educativo y social, para un publico interesado en la visión que los estudiantes tienen de su carrera, los eventos y situaciones que en ella se generan.</p>
+                    <p>Las notas publicadas en este sitio no son en su totalidad creaciones de los creadores de la pagina, sino una colaboración conjunta entre nosotros y los representantes de los diferentes ciclos de nuestra carrera Ingeniería en Sistemas.</p>
+                </article>
+
+                <!-- Autores -->
+                <article id="about">
+                    <h2 class="major">Autores</h2>
+                    <span class="image main"><img src='/images/pic03.jpg' alt="" /></span>
+                    <p>Esta revista ha sido creado por:<br><br>
+                        Bryan Requenes<br>
+                        Estudiante de 4to ciclo de la Carrera de Ingeniería en Sistemas de la Universidad Nacional de Loja.<br>
+                        email: bryan.requenes@unl.edu.ec<br>
+                        cel: 0988564903<br><br>
+                        Fernanado Ortega<br>
+                        Estudiante de 4to ciclo de la Carrera de Ingeniería en Sistemas de la Universidad Nacional de Loja.<br>
+                        email: josue.ortega@unl.edu.ec<br>
+                        cel: 0979930876<br><br>
+                        Franco Mendoza<br>
+                        Estudiante de 4to ciclo de la Carrera de Ingeniería en Sistemas de la Universidad Nacional de Loja.<br>
+                        email: franco.mendoza@unl.edu.ec<br>
+                        cel: 0968353674
+                    </p>
+                </article>
+
+            </div>
+
+            <!-- Footer -->
+            <footer id="footer">
+                <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
+
+        </div>
+
+        <!-- BG -->
+        <div id="bg"></div>
+
+        <!-- Scripts -->
+
+        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+        <!-- metodo de Login en la pagina con gmail -->
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBHUy-kHhWZKJ-QL3NtJkMO2giQsaGyAk0",
+                authDomain: "revista-ff832.firebaseapp.com",
+                databaseURL: "https://revista-ff832.firebaseio.com",
+                projectId: "revista-ff832",
+                storageBucket: "revista-ff832.appspot.com",
+                messagingSenderId: "885560839652"
+            };
+            firebase.initializeApp(config);
+
+            document.getElementById("Google").addEventListener("click", function () {
+                var provider = new firebase.auth.GoogleAuthProvider();
+
+                firebase.auth().signInWithPopup(provider).then(function (user) {
+                    console.log(user);
+                    window.location = "http://localhost:3000/revista";
+
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            });
+        </script>
+        <script src='/javascripts/jquery.min.js'></script>
+        <script src='/javascripts/browser.min.js'></script>
+        <script src='/javascripts/breakpoints.min.js'></script>
+        <script src='/javascripts/util.js'></script>
+        <script src='/javascripts/main.js'></script>
+
+    </body>
+</html>
