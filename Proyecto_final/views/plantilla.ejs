@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title><%= title %></title>
+        <meta charset="utf-8"/>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="/stylesheets/materialize.min.css"/>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            body{
+                background: url('images/portadas/r3.jpg') no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }  
+        </style>
+        <% if(r){ %>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <% } %>
+    </head>
+
+    <body>
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper blue-grey">
+                    <a href="/" class="brand-logo"><img width="53%" src="/images/Logo.jpg" /></a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+
+                        <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Crear Noticia</a></li>
+
+                        <li><a class="op" href='#' data-target='dropdown1'>Opciones</a></li>
+
+
+                        <!-- Dropdown Structure -->
+                        <ul style="background-color: " id='dropdown1' class='dropdown-content'>
+                            <li class="bold"><a class="waves-effect waves-teal" href="/cargaarchivo">Subir Articulos</a></li>
+                            <li><a href="/listar">Listar Articulos</a></li>
+                            <li><a href="/cargar_edicion">Nueva Edicion</a></li>
+                            <li><a href="/unirpdf">Nueva Revista</a></li>
+                            <li><a href="/home">Revistas</a></li>
+
+                            <!--<span id="fbLogout" onclick="fbLogout()"><a class="fb_button fb_button_medium"><span class="fb_button_text">Salir</span></a></span>-->
+                            <li class="bold"><a id="fbLogout" class="waves-effect waves-teal" >Salir</a></li>
+
+                        </ul>
+
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal">
+                            <div class="modal-content">
+                                <form >
+                                    <h4 style="color: blue">Publicacion</h4>
+
+                                    <textarea id="publicacion" rows="4" cols="50">
+
+                                    </textarea>
+                                    <label for="icon_prefix">Publicacion</label>
+
+
+<button style="background-color: blue; color: #ffffff" onclick="postearFrase()" class="modal-close waves-effect waves-green btn-flat">Enviar</button>
+                                </form>
+                            </div>
+                        </div>
+
+
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li class="logo" style="height: 120px">
+                <a href="/" style="padding-left: 0px">
+                    <img src="/images/Logo.jpg" />
+                </a>
+            </li>
+            <li class="version center-align">
+                v0.0.1
+            </li>
+            <li class="search">
+                <div class="search-wrapper">
+                    <input id="search" placeholder="Search"><i class="material-icons">search</i>
+                    <div class="search-results"></div>
+                </div>
+            </li>
+
+        </ul>
+
+        <script  type="text/javascript" src="/javascripts/extras/jquery.min.1.7.js"></script>
+    <body >
+        <div class="row">
+            <div id="d1" class="col s8">
+                <!-- Inicio Cuerpo -->
+                <%- include(archivo) -%>
+                <!-- Fin Cuerpo -->
+            </div>
+            <div class="col s4">
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FNews-Systems-2260294273998077%2F&tabs=timeline&width=430&height=900&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=2220215738197721" width="100%" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+            </div>
+        </div>
+    </body>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="/javascripts/materialize.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems, options);
+    });
+// Or with jQuery
+
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+    window.onload = function () {
+        FB.init({
+            appId: '{your-app-id}',
+            status: true,
+            xfbml: true,
+            version: 'v2.7' // or v2.6, v2.5, v2.4, v2.3
+        });
+    };
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/es_LA/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    function postearFrase() {
+        FB.api('/me/feed', 'post', {message: $('#publicacion').text()});
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.op');
+        var instances = M.Dropdown.init(elems, options);
+    });
+    // Or with jQuery
+
+    $('.op').dropdown();
+
+    </script>
+
+</body>
+</html>

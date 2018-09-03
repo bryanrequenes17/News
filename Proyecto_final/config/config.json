@@ -1,0 +1,17 @@
+{
+    "development":{
+        "username": "fercho",
+        "password": "root",
+        "database": "proyecto",
+        "host": "localhost",
+        "dialect": "mysql"
+    },
+    "staging":{
+        "username": "fercho",
+        "password": "root",
+        "database": "proyecto",
+        "host": "localhost",
+        "dialect": "mysql"
+    }
+}
+

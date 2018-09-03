@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+
+        <div class="imgWrapper4">
+            <div class="imgResponsiva" onclick="abrir()">
+                <img class="activator" src="/images/portadas/r1.jpg">
+            </div>
+            <div class="imgResponsiva">
+                <img src="/images/sample-1.jpg"/>
+            </div>
+            <div class="imgResponsiva">
+                <img src="/images/sample-1.jpg"/>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+<script>
+    function abrir(){
+    window.open('https://s3.amazonaws.com/online.fliphtml5.com/qezu/rqhn/index.html', '_blank');    
+    }
+    
+</script>
+
+<style>
+    .imgWrapper4, .imgWrapper3 {
+    font-size: 0;
+}
+.imgWrapper4 .imgResponsiva,
+.imgWrapper3 .imgResponsiva {
+    display: inline-block;
+    font-size: inherit;
+    padding: 10px;                  /* Cambie el valor de espaciado como desee aquí */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.imgWrapper4 .imgResponsiva {width: 33.3%;}
+.imgWrapper3 .imgResponsiva {width: 33.3%;}
+
+.imgResponsiva img {
+    height: auto;
+    width: 100%;
+}
+.imgResponsiva:hover {-webkit-transform:scale(1.3);transform:scale(1.3);}
+.imgResponsiva {overflow:hidden;}
+
+</style>

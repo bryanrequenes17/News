@@ -1,0 +1,94 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,
+          initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--link jquery de bootstrap-->        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link href="/recursos/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="/recursos/js/bootstrap.min.js"></script>
+    <link href="/recursos/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+    </br>
+    <title>Revistas</title>
+</head>
+<div class="container">
+    <h1><%= h1 %></h1>
+    <blockquote>
+        <%= blokq %>
+    </blockquote>
+</div>
+
+<div class="container">
+    <div class="fixed-action-btn">
+        <a href="/home" class="btn-floating btn-large blue-grey">
+            <i class="large material-icons">highlight_off</i>
+        </a>
+    </div>
+    <form method="post" action="/multipart/subirruta" enctype="multipart/form-data">
+         <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">mode_edit</i>
+                <input id="icon_prefix2" id="revista" name="revista" placeholder="Revista">
+                <div id="viewpdf" style="width:300px; height:275px; margin-left: 200px; frameborder="0"></div>
+            </div>
+        </div>
+        <div for="archivo" class="file-field input-lg">
+            <div class="btn">
+                <span style="margin-left: 12px" class="glyphicon glyphicon-folder-open"></span>
+                <span>Subir archivo</span>
+                <input  id="archivo" name="archivo" type="file">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        <input type='button' id='btnLoad' class="btn btn-primary" value='Visualizar' onclick='leeyMuestra();'>
+        <input type='button' value='Obtener' class="btn btn-success" onclick='obtener();'>
+        <input type='submit' value='Guardar' class="btn btn-success" >
+        
+    </form>
+<script src="../recursos/pdfobject.min.js"></script> 
+<script>
+        var arrayBuffer = "";
+        var $j = jQuery;
+        function leeyMuestra() {
+            if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
+                alert('The File APIs are not fully supported in this browser.');
+                return;
+            }
+            input = document.getElementById('archivo');
+            if (!input) {
+                alert("Um, couldn't find the file element.");
+            } else if (!input.files) {
+                alert("This browser doesn't seem to support the files property of file inputs.");
+            } else if (!input.files[0]) {
+                alert("Please select a file before clicking 'Load'");
+            } else {
+                file = input.files[0];
+                fr = new FileReader();
+                arrayBuffer = fr.readAsBinaryString(file);
+                var viewer = $('#viewpdf');
+                var data = file;
+                var blob = new Blob([data], {type: "application/pdf"});
+                var objectUrl = URL.createObjectURL(blob);
+                PDFObject.embed(objectUrl, viewer);
+            }
+
+
+        }
+        function obtener() {
+            var data = file;
+            var blob = new Blob([data], {type: "application/pdf"});
+            var objectUrl = URL.createObjectURL(blob);
+            window.open(objectUrl);
+        }
+
+</script>
+<script  type="text/javascript" src="/javascripts/lib/turn.min.js"></script>
+<script type="text/javascript">
+        $("#flipbook").turn({
+            width: 800,
+            height: 600,
+            autoCenter: true
+        });
+</script>
